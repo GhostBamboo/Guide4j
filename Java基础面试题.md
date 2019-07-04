@@ -12,17 +12,106 @@
 - 多继承性可通过实现这样的接口而获得；
 - 接口只可以定义 static final 成员变量。
 
+### **switch 是否能作用在byte 上，是否能作用在long 上，是否能作用在String上？**
+
+在Java 5以前，switch(expr)中，expr只能是byte、short、char、int。从Java 5开始，Java中引入了枚举类型，expr也可以是enum类型，从Java 7开始，expr还可以是字符串（String），但是长整型（long）在目前所有的版本中都是不可以的。
+
 ### String、StringBuilder、StringBuffer的区别
 
 - String 是不可变的对象，每次对 String 类型进行改变的时候其实是产生了一个新的 String 对象，然后指针指向新的 String 对象； 
 - StringBuffer 是线程安全的可变字符序列，需要同步，则使用。 
 - StringBuilder 线程不安全，速度更快，单线程使用。 
 
-String 是一个类，但却是不可变的，所以 String 创建的算是一个字符串常量， StringBuffer 和 StringBuilder 都是可变的。所以每次修改 String 对象的值都是新建一个对象再指向这个对象。而使用 StringBuffer 则是对 StringBuffer 对象本身进行 
+String 是一个类，但却是不可变的，所以 String 创建的算是一个字符串常量， StringBuffer 和 StringBuilder 都是可变的。所以每次修改 String 对象的值都是新建一个对象再指向这个对象。而使用 StringBuffer 则是对 StringBuffer 对象本身进行 操作。所以在字符串经常改变的情况下，使用 StringBuffer 要快得多。
 
-操作。所以在字符串经常改变的情况下，使用 StringBuffer 要快得多。
+### Servlet和Filter
+
+##### 过程：
+
+```
+Filter对用户请求进行预处理，接着将请求交给Servlet进行处理并生成响应，最后Filter再对服务器响应进行后处理。
+```
+
+##### Filter有如下几个用处： 
+
+```
+	Filter可以进行对特定的url请求和响应做预处理和后处理。 在HttpServletRequest到达Servlet之前，拦截客户的 HttpServletRequest。 根据需要检查HttpServletRequest，也可以修改HttpServletRequest头和数据。 在HttpServletResponse到达客户端之前，拦截HttpServletResponse。 根据需要检查HttpServletResponse，也可以修改HttpServletResponse头和数据。 
+	实际上Filter和Servlet极其相似，区别只是Filter不能直接对用户生成响应。实际上Filter里doFilter()方法里的代码就是从多个Servlet的service()方法里 抽取的通用代码，通过使用Filter可以实现更好的复用。 
+```
+
+##### Filter和Servlet的生命周期：
+
+1. Filter在web服务器启动时初始化 
+2. 如果某个Servlet配置了 <load-on-startup >1 </load-on-startup >，该Servlet也是在 Tomcat（Servlet容器）启动时初始化。 
+3. 如果Servlet没有配置<load-on-startup >1 </load-on-startup >，该Servlet不会在Tomcat启动时初始化，而是在请求到来时初始化。 
+4. 每次请求， Request都会被初始化，响应请求后，请求被销毁。 
+5. Servlet初始化后，将不会随着请求的结束而注销。 
+6. 关闭Tomcat时，Servlet、Filter依次被注销。
+
+### **抽象的（abstract）方法是否可同时是静态的（static）,是否可同时是本地方法（native），是否可同时被synchronized修饰？** 
+
+都不能。抽象方法需要子类重写，而静态的方法是无法被重写的，因此二者是矛盾的。本地方法是由本地代码（如C代码）实现的方法，而抽象方法是没有实现的，也是矛盾的。synchronized和方法的实现细节有关，抽象方法不涉及实现细节，因此也是相互矛盾的。
+
+### **如何实现对象克隆？**
+
+有两种方式： 
+  1). 实现Cloneable接口并重写Object类中的clone()方法； 
+  2). 实现Serializable接口，通过对象的序列化和反序列化实现克隆，可以实现真正的深度克隆，代码如下。
+
+```java
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+public class MyUtil {
+
+    private MyUtil() {
+        throw new AssertionError();
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T extends Serializable> T clone(T obj) throws Exception {
+        ByteArrayOutputStream bout = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(bout);
+        oos.writeObject(obj);
+
+        ByteArrayInputStream bin = new ByteArrayInputStream(bout.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(bin);
+        return (T) ois.readObject();
+
+        // 说明：调用ByteArrayInputStream或ByteArrayOutputStream对象的close方法没有任何意义
+        // 这两个基于内存的流只要垃圾回收器清理对象就能够释放资源，这一点不同于对外部资源（如文件流）的释放
+    }
+}
+```
 
 
+
+### **Java**的四种引用，强弱软虚，以及用到的场景 
+
+a.利用软引用和弱引用解决OOM问题：用一个HashMap来保存图片的路径和相应图片对象关联的软引用之间的映射关系，在内存不足时，JVM会自动回收这些缓存图片对象所占用的空间，从而有效地避免了OOM的问题。 
+
+b.通过软可及对象重获方法实现Java对象的高速缓存:比如我们创建了一Employee的类，如果每次需要查询一个雇员的信息。哪怕是几秒中之前刚刚查询过的，都要重新构建一个实例，这是需要消耗很多时间的。我们可以通过软引用和 HashMap 的结合，先是保存引用方面：以软引用的方式对一个Employee对象的实例进行引用并保存该引用到HashMap 上，key 为此雇员的 id，value为这个对象的软引用，另一方面是取出引用，缓存中是否有该Employee实例的软引用，如果有，从软引用中取得。如果没有软引用，或者从软引用中得到的实例是null，重新构建一个实例，并保存对这个新建实 例的软引用。 
+
+c.强引用：如果一个对象具有强引用，它就不会被垃圾回收器回收。即使当前内存空间不足，JVM也不会回收它，而是抛出 OutOfMemoryError 错误，使程序异常终止。如果想中断强引用和某个对象之间的关联，可以显式地将引用赋值为null，这样一来的话，JVM在合适的时间就会回收该对象。 
+
+d.软引用：在使用软引用时，如果内存的空间足够，软引用就能继续被使用，而不会被垃圾回收器回收，只有在内存不足时，软引用才会被垃圾回收器回收。 
+
+e.弱引用：具有弱引用的对象拥有的生命周期更短暂。因为当 JVM 进行垃圾回收，一旦发现弱引用对象，无论当前内存空间是否充足，都会将弱引用回收。不过由于垃圾回收器是一个优先级较低的线程，所以并不一定能迅速发现弱引用对象。 
+
+f.虚引用：顾名思义，就是形同虚设，如果一个对象仅持有虚引用，那么它相当于没有引用，在任何时候都可能被垃圾回收器回收。
+
+### **JAVA**多态的实现原理 
+
+a.抽象的来讲，多态的意思就是同一消息可以根据发送对象的不同而采用多种不同的行为方式。（发送消息就是函数调用） 
+
+b.实现的原理是动态绑定，程序调用的方法在运行期才动态绑定，追溯源码可以发现，JVM 通过参数的自动转型来找到合适的办法。 
+
+### **Hashcode**的作用，与 **equal** 有什么区别？ 
+
+同样用于鉴定2个对象是否相等的，java集合中有 list 和 set 两类，其中 set不允许元素重复实现，那个这个不允许重复实现的方法，如果用 equal 去比较的话，如果存在1000个元素，你 new 一个新的元素出来，需要去调用1000次 equal 去逐个和他们比较是否是同一个对象，这样会大大降低效率。hashcode实际上是返回对象的存储地址，如果这个位置上没有元素，就把元素直接存储在上面，如果这个位置上已经存在元素，这个时候才去调用equal方法与新元素进行比较，相同的话就不存了，散列到其他地址上。
 
 ### 数据连接池的工作机制
 
@@ -36,9 +125,9 @@ J2EE 服务器启动时会建立一定数量的池连接，并一直维持不少
 
 主要分4类，见下图：
 
-- JVM类加载器：这个模式会加载JAVA_HOME/lib下的jar包 ；
-- 扩展类加载器：会加载JAVA_HOME/lib/ext下的jar包 ；
-- 系统类加载器：这个会去加载指定了classpath参数指定的jar 文件 ；
+- JVM类（根）加载器（BootStrap）：这个模式会加载JAVA_HOME/lib下的jar包 ；
+- 扩展类加载器（Extension）：会加载JAVA_HOME/lib/ext下的jar包 ；
+- 系统类加载器（System）：这个会去加载指定了classpath参数指定的jar 文件 ；
 - 用户自定义类加载器：sun提供的ClassLoader是可以被继承 的，允许用户自己实现类加载器 。
 
 类加载器的加载顺序如图所示：
@@ -98,3 +187,7 @@ TCP 连接是双向的，一个是从客户端到服务端，另一个是从服�
 ### HTTPS是如何解决通信安全问题的？
 
 HTTPS 要使客户端与服务器端的通信过程得到安全保证，必须 使用的对称加密算法，但是协商对称加密算法的过程，需要使用非对称加密算法来保证安全，然而直接使用非对称加密的过程本身也不安全，会有中间人篡改公钥的可能性，所以客户端与服务器不直接使用公钥，而是使用数字证书签发机构颁发的证书来保证非对称加密过程本身的安全。这样通过这些机制协商出一个对称加密算法，就此双方使用该算法进行加密解密。从而解决了客户端与服务 器端之间的通信安全问题。
+
+### 一个Web请求操作的全过程
+
+一个Http请求 DNS域名解析 --> 发起TCP的三次握手 --> 建立TCP连接后发起http请求 --> 服务器响应http请求，浏览器得到html代码 --> 浏览器解析 html代码，并请求html代码中的资源（如javascript、css、图片等） --> 浏览器对页面进行渲染呈现给用户
