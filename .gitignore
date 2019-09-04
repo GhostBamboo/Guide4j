@@ -1,0 +1,19 @@
+# Compiled class file
+*.class
+*.iml
+*.idea
+target/
+logs/
+
+# Log file
+*.log
+
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+
+# Eclipse #
+.classpath
+.project
+.settings/
