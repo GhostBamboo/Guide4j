@@ -1,39 +1,91 @@
-# Companion4j
+#### 目录
 
-#### 介绍
-{**以下是码云平台说明，您可以替换此简介**
-码云是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+- [Java基础部分](#Java基础部分)
 
-#### 软件架构
-软件架构说明
+    - [核心](#核心)
+    
+    - [集合](#集合)
+    
+    - [IO流](#IO流)
+    
+    - [通信](#通信)
+    
+    - [并发](#并发)
+    
+    - [JVM虚拟机](#JVM虚拟机)
+    
+    - [设计模式](#设计模式)
+    
+    - [操作系统基础](#操作系统基础)
+    
+    
+    
+- [数据库部分](#数据库部分)
+
+    - [Mysql](#Mysql)
+    
+    - [Redis](#Redis)
+    
+    
+- [分布式及微服务部分](#分布式及微服务部分)
+
+    
+    
+    
+#### Java基础部分
+
+   ##### 核心
+   
+   - [Java基础面试题](java基础/核心/Java基础面试题.md)
+   
+   - [Java基础习题](java基础/核心/Java基础习题讲解.md)
+
+   ##### 集合
+   
+   - [ArrayList源码分析](java基础/集合/ArrayList源码分析.md)
 
 
-#### 安装教程
+   ##### IO流
 
-1. xxxx
-2. xxxx
-3. xxxx
+   ##### 通信
+   
+   ##### 并发
+   
+   - [Java并发编程](Java并发编程笔记.md)
+   
+   ##### JVM虚拟机
+   
+   - [JVM解析（Java8）](JVM笔记.md)
 
-#### 使用说明
+   ##### 设计模式
+   
+   - [设计模式](设计模式.md)
+   
+   ##### 操作系统基础
+   
 
-1. xxxx
-2. xxxx
-3. xxxx
+#### 数据库部分
 
-#### 参与贡献
+   ##### Mysql
+   
+   - [Mysql性能调优](数据库/Mysql/Mysql性能调优.md)
+   
+   - [Mysql锁](数据库/Mysql/Mysql锁及主从复制.md)
 
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+   
+   ##### Redis
+   
+   - [Redis基础](数据库/Redis/Redis数据库全解.md)
+   
 
 
-#### 码云特技
+#### 分布式及微服务部分
 
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+   - [SpringCloud与微服务](分布式及微服务/SpringCloud与微服务.md)
+   
+   - [Dubbo基础解析](分布式及微服务/Dubbo-RPC框架.md)
+   
+   - [分布式事务](分布式及微服务/分布式事务及分布式锁.md)
+
+   
+
