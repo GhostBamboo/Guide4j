@@ -10,7 +10,7 @@
    随着访问量的上升，几乎大部分使用MySQL架构的网站在数据库上都开始出现了性能问题，web程序不再仅仅专注在功能上，同时也在追求性能。程序员们开始大量的使用缓存技术来缓解数据库的压力，优化数据库的结构和索引。开始比较流行的是通过文件缓存来缓解数据库压力，但是当访问量继续增大的时候，多台web机器通过文件缓存不能共享，大量的小文件缓存也带了了比较高的IO压力。在这个时候，Memcached就自然的成为一个非常时尚的技术产品。
    ```
 
-   ![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/Mysql垂直拆分.png?dkey=fbf559da-3b5a-4819-9ee2-0868befc8ae8>)
+   ![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/Mysql%E5%9E%82%E7%9B%B4%E6%8B%86%E5%88%86.png>)
 
 3. Mysql主从复制和读写分离
 
@@ -18,7 +18,7 @@
    由于数据库的写入压力增加，Memcached只能缓解数据库的读取压力。读写集中在一个数据库上让数据库不堪重负，大部分网站开始使用主从复制技术来达到读写分离，以提高读写性能和读库的可扩展性。Mysql的master-slave模式成为这个时候的网站标配了。
    ```
 
-   ![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/Mysql的主从读写分离架构.png?dkey=2966316f-ba96-40b7-a179-456bad677278>)
+   ![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/Mysql%E7%9A%84%E4%B8%BB%E4%BB%8E%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%9E%B6%E6%9E%84.png>)
 
 4. 分表分库+水平拆分+mysql集群 
 
@@ -32,7 +32,7 @@
 
 5. 现在的架构
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/现今的企业架构.png?dkey=24de6eca-c80c-41b8-a463-e904b3be7885>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%92%8C%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84.png>)
 
 ```
 MySQL数据库也经常存储一些大文本字段，导致数据库表非常的大，在做数据库恢复的时候就导致非常的慢，不容易快速恢复数据库。比如1000万4KB大小的文本就接近40GB的大小，如果能把这些数据从MySQL省去，MySQL将变得非常的小。关系数据库很强大，但是它并不能很好的应付所有的应用场景。MySQL的扩展性差（需要复杂的技术来实现），大数据下IO压力大，表结构更改困难，正是当前使用MySQL的开发人员面临的问题。Nosql数据库正是为了解决这些问题而诞生。
@@ -94,7 +94,7 @@ CP - 满足一致性，分区容忍必的系统，通常性能不是特别高。
 AP - 满足可用性，分区容忍性的系统，通常可能对一致性要求低一些。
 ```
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/CAP数据库盘点.png?dkey=89c7fa40-b8b0-483a-92de-e83bee9a1960>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/CAP%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%98%E7%82%B9.png>)
 
 BASE理论：
 
@@ -221,7 +221,7 @@ Redis持久化包含两种方式，AOF（Append only file）和RDB（Redis DataB
 - 在一定间隔时间做一次备份，所以如果redis意外down掉的话，就会丢失最后一次快照后的所有修改；
 - Fork的时候，内存中的数据被克隆了一份，大致2倍的膨胀性需要考虑。
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/RDB理论.png?dkey=1944dc9d-1506-405b-a7ea-5f9539426ba2>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/RDB%E7%90%86%E8%AE%BA.png>)
 
 **AOF（Append only file）：**
 
@@ -255,7 +255,7 @@ Redis会记录上次重写时的AOF大小，默认配置是当AOF文件大小是
 - 相同数据集的数据而言aof文件要远大于rdb文件，恢复速度慢于rdb；
 - Aof运行效率要慢于rdb,每秒同步策略效率较好，不同步效率和rdb相同。
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/AOF理论.png?dkey=b5f61a51-7771-4884-afe6-68b7d332caaa>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/AOF%E7%90%86%E8%AE%BA.png>)
 
 **RDB与AOF性能比较及建议：**
 
@@ -320,7 +320,7 @@ Watch指令，类似乐观锁，事务提交时，如果Key的值已被别的客
 
 进程间的一种消息通信模式：发送者(pub)发送消息，订阅者(sub)接收消息。
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/Redis的消息订阅.png?dkey=e70a86b0-afc5-4d46-808a-d669bfaed23a>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/Redis%E7%9A%84%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85.png>)
 
 ```
  先订阅后发布后才能收到消息，

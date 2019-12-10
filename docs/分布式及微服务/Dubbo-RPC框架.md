@@ -25,7 +25,7 @@
 
 ### Dubbo架构说明
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/Dubbo架构pro.png?dkey=302ac487-3c2b-4b83-9ee6-960aca8734f0>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/Spring/Dubbo%E6%9E%B6%E6%9E%84pro.png>)
 
 | 节点        | 角色说明                               |
 | ----------- | -------------------------------------- |

@@ -132,11 +132,11 @@ J2EE 服务器启动时会建立一定数量的池连接，并一直维持不少
 
 类加载器的加载顺序如图所示：
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/ClassLoader加载顺序.png?dkey=cb6a844e-88fb-4161-aa26-21943adfc44f>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/JavaSE/ClassLoader%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F.png>)
 
 JVM并不是把所有的类一次性全部加载到JVM中的，也不是每次用到一个类的时候都去查找，对于JVM级别的类加载器在启 动时就会把默认的JAVA_HOME/lib里的class文件加载到JVM 中，因为这些是系统常用的类，对于其他的第三方类，则采用用到时就去找，找到了就缓存起来的，下次再用到这个类的时 候就可以直接用缓存起来的类对象了，ClassLoader之间也是有父子关系的，每个ClassLoader都有一个父ClassLoader,在加载类 时ClassLoader与其父ClassLoader的查找顺序如下图所示：
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/ClassLoader查找顺序.png?dkey=04793c11-9a89-4422-9694-5a84545d7d68>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/JavaSE/ClassLoader%E6%9F%A5%E6%89%BE%E9%A1%BA%E5%BA%8F.png>)
 
 ### TCP的优势
 
@@ -162,7 +162,7 @@ JVM并不是把所有的类一次性全部加载到JVM中的，也不是每次�
 
 **过程：**
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/TCP三次握手.png?dkey=613e1c67-4ada-4b83-a838-84538a542a72>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/JavaSE/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png>)
 
 ##### 四次挥手：
 
@@ -176,7 +176,7 @@ TCP 连接是双向的，一个是从客户端到服务端，另一个是从服�
 
 **过程：**
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/TCP四次挥手.png?dkey=6f17d439-7e77-43c6-8a97-611cb08c2ee0>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/JavaSE/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png>)
 
 **TIME_WAIT 状态：**
 

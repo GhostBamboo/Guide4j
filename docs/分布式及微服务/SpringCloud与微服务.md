@@ -43,7 +43,7 @@ Dubbo是怎么到SpringCloud的？哪些优缺点让你去技术选型：
 
 - 最大区别：SpringCloud抛弃了Dubbo的RPC通信，采用的是基于HTTP的REST方式。
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/Dubbo与SpringCloud对比.png?dkey=1af122ae-0427-4b6d-8d78-2de605053bba>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/Spring/Dubbo%E4%B8%8ESpringCloud%E5%AF%B9%E6%AF%94.png>)
 
 ### Eureka服务注册与发现
 
@@ -64,9 +64,9 @@ Eureka 采用了 C-S 的设计架构。Eureka Server 作为服务注册功能的
 和Dubbo的架构对比
 
 
-​      ![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/Eureka架构.png?dkey=a691b91f-325d-4af8-8562-f965b6be0a60>)
+​      ![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/Spring/Eureka%E6%9E%B6%E6%9E%84.png>)
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/Dubbo架构.png?dkey=89bba750-2d67-4aad-a07b-012f85d7867a>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/Spring/Dubbo%E6%9E%B6%E6%9E%84.png>)
 
 Eureka包含两个组件：Eureka Server和Eureka Client。
 
@@ -108,7 +108,7 @@ Ribbon就属于进程内LB，它只是一个类库，集成于消费方进程，
 
 架构说明：
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/Ribbon架构说明.png?dkey=0c07a673-939d-49ec-87fc-7c50aff885f9>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/Spring/Ribbon%E6%9E%B6%E6%9E%84%E8%AF%B4%E6%98%8E.png>)
 
 Ribbon在工作时分成两步：
 

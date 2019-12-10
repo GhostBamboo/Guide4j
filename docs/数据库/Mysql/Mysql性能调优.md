@@ -274,7 +274,7 @@ Extra：表示查询过程的附件信息。
 
 6. group by与order by很类似，其实质是先排序后分组，遵照索引创建顺序的最佳左前缀法则。当无法使用索引列的时候，也要对sort_buffer_size和max_length_for_sort_data参数进行调整。注意where高于having，能写在where中的限定条件就不要去having限定了。
 
-   ![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/ordeby索引情况.png?dkey=843d3fcd-cbd9-48b1-a1ee-0291503dd3a4>)
+   ![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/ordeby%E7%B4%A2%E5%BC%95%E6%83%85%E5%86%B5.png>)
 
 ###  如何避免索引失效？
 
@@ -346,7 +346,7 @@ mysql> set profiling=1;
 
 参数展示：
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/showProfile参数展示.png?dkey=45e6f4cc-ab93-4f44-93cc-91cf7c519bd9>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/showProfile%E5%8F%82%E6%95%B0%E5%B1%95%E7%A4%BA.png>)
 
 以下参数急需优化：
 
@@ -372,7 +372,7 @@ from --> on -->join --> where --> group by --> having --> select distinct --> or
 
 INNER JOIN（内连接）
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/sql_inner join.png?dkey=cd4ec8f5-e899-429b-ac90-931d85100510>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/sql_inner%20join.png>)
 
 ```sql
 SELECT <select_list> 
@@ -383,7 +383,7 @@ ON A.Key = B.Key
 
 LEFT JOIN (左连接)
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/sql_left  join.png?dkey=c024ae95-62af-45df-95ff-39fb05d16f2f>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/sql_left%20%20join.png>)
 
 ```sql
 SELECT <select_list>
@@ -394,7 +394,7 @@ ON A.Key = B.Key
 
 RIGHT JOIN (右连接)
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/sql_right join.png?dkey=760b5529-89f4-438a-9bea-53ede720ad1f>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/sql_right%20join.png>)
 
 ```sql
 SELECT <select_list>
@@ -405,7 +405,7 @@ ON A.Key = B.Key
 
 OUTER JOIN (外连接)
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/sql_outer join.png?dkey=90fb2cca-4410-4e54-94bc-1daa8aa3f004>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/sql_outer%20join.png>)
 
 ```sql
 SELECT <select_list>
@@ -416,7 +416,7 @@ ON A.Key = B.Key
 
 LEFT Excluding JOIN（左连接排除内连接结果）
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/sql_Left Exclude join.png?dkey=b83e522c-f80e-44a1-aacb-85dc4ad92057>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/sql_Left%20Exclude%20join.png>)
 
 ```sql
 SELECT <select_list> 
@@ -428,7 +428,7 @@ WHERE B.Key IS NULL
 
 RIGHT Excluding JOIN（右连接排除内连接结果）
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/sql_Right Exclude join.png?dkey=91bab137-2f62-4f80-bba9-cc0582b973a3>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/sql_Right%20Exclude%20join.png>)
 
 ```sql
 SELECT <select_list>
@@ -440,7 +440,7 @@ WHERE A.Key IS NULL
 
 OUTER Excluding JOIN（外连接排除内连接结果）
 
-![](<http://39.96.187.148:8080/externalLinksController/downloadFileByKey/sql_Outer Exclude join.png?dkey=28e0690b-0065-48e1-b892-4793913a340f>)
+![](<https://ghostbamboo.oss-cn-beijing.aliyuncs.com/Guide4J/DataBase/sql_Outer%20Exclude%20join.png>)
 
 ```sql
 SELECT <select_list>
